@@ -5,6 +5,7 @@ include 'win32a.inc'
 include 'process.asm'
 include 'utils.asm'
 include 'features.asm'
+include 'entity.asm'
 
 section '.text' code executable
 main:
@@ -27,6 +28,11 @@ worker:
         invoke GetAsyncKeyState, 32
         test eax, eax
         jnz .bhopKey
+
+        invoke GetAsyncKeyState, 35 ; panic key
+        test eax, eax
+        jnz exit
+
         jmp worker
 
         .triggerKey:
@@ -61,6 +67,7 @@ section '.rdata' data readable
 
     dwForce db 0x6
     dwLocalPlayerPtr    dd 0xAAFC3C
+    dwEntityList		dd 0x4A8D05C
     dwClientState       dd 0x5A5344
     dwOffsetState       dd 0x108
     dwOffsetCrossId     dd 0xB294

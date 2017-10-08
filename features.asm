@@ -3,12 +3,29 @@ Triggerbot:
     add eax, [dwOffsetCrossId]
     invoke ReadProcessMemory, [pHandle], eax, dwCrossid, 4, 0 
     cmp [dwCrossid], 0
-    jnz .shot
+    jnz .check
     ret
+    .check:
+        push [dwCrossid]
+        call GetEntityByIndex
+        add esp, 4
+
+        push eax
+        call GetEntityTeam
+        add esp, 4
+        mov ebx, eax
+
+        call GetLocalTeam
+        add esp, 0
+
+        cmp ebx, eax
+        jne .shot
+        ret
     .shot:
         mov eax, [dwClient]
         add eax, [dwForceAttack]
         invoke WriteProcessMemory, [pHandle], eax, dwForce, 4, 0
+        invoke Sleep, 0xA
     ret
 
 Bunnyhop:
