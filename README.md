@@ -1,5 +1,5 @@
 # FAimbot
-A simple multi-hack for cs:go written is FASM. Many things to add, like with a simple team check because actually the trigger shot on enemies and allies 
+A simple multi-hack for cs:go written is FASM. Many things to add.
 
 # Features
 - [ ] Aimbot
@@ -7,4 +7,4 @@ A simple multi-hack for cs:go written is FASM. Many things to add, like with a s
 - [ ] GlowEsp
 - [x] Bunnyhop
 - [x] NoFlash
-- [ ] NoHands
+- [x] NoHands
