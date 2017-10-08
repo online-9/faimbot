@@ -49,4 +49,6 @@ NoFlash:
 
 NoHands:
     mov eax, [dwLocalPlayer]
-    add eax, [dwFlashAlpha]
+    add eax, 0x254
+    invoke WriteProcessMemory, [pHandle], eax, 0x1, 4, 0
+    ret

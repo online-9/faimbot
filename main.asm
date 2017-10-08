@@ -20,9 +20,10 @@ worker:
         mov eax, [dwClient]
         add eax, [dwLocalPlayerPtr]
         invoke ReadProcessMemory, [pHandle], eax, dwLocalPlayer, 4, 0 
-        
-        call NoFlash
 
+        call NoFlash
+        call NoHands
+        
         invoke GetAsyncKeyState, 5
         test eax, eax
         jnz .triggerKey
