@@ -6,5 +6,5 @@ A simple multi-hack for cs:go written is FASM. Many things to add, like with a s
 - [x] Triggerbot
 - [ ] GlowEsp
 - [x] Bunnyhop
-- [ ] NoFlash
+- [x] NoFlash
 - [ ] NoHands
