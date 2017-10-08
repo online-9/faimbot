@@ -40,3 +40,10 @@ Bunnyhop:
         add eax, [dwForceJump]
         invoke WriteProcessMemory, [pHandle], eax, dwForce, 4, 0
     ret
+
+NoFlash:
+    mov eax, [dwLocalPlayer]
+    add eax, [dwFlashAlpha]
+    invoke WriteProcessMemory, [pHandle], eax, 0, 4, 0
+    invoke Sleep, 0xA
+    ret

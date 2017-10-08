@@ -21,6 +21,8 @@ worker:
         add eax, [dwLocalPlayerPtr]
         invoke ReadProcessMemory, [pHandle], eax, dwLocalPlayer, 4, 0 
 
+        call NoFlash
+
         invoke GetAsyncKeyState, 5
         test eax, eax
         jnz .triggerKey
@@ -73,6 +75,7 @@ section '.rdata' data readable
     dwOffsetCrossId     dd 0xB294
     dwForceJump         dd 0x4F23F08
     dwForceAttack       dd 0x2ECF3DC
+    dwFlashAlpha		dd 0xA2E4
 
     szWaitingProcess    db "Waiting for CSGO", 10, 0
     szWindowTitle       db 'Counter-Strike: Global Offensive', 0
