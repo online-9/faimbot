@@ -44,11 +44,11 @@ Bunnyhop:
 NoFlash:
     mov eax, [dwLocalPlayer]
     add eax, [dwFlashAlpha]
-    invoke WriteProcessMemory, [pHandle], eax, 0, 4, 0
+    invoke WriteProcessMemory, [pHandle], eax, FlashAlpha, 4, 0
     ret
 
 NoHands:
     mov eax, [dwLocalPlayer]
     add eax, 0x254
-    invoke WriteProcessMemory, [pHandle], eax, 0x1, 4, 0
+    invoke WriteProcessMemory, [pHandle], eax, vNoHands, 4, 0
     ret

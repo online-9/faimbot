@@ -2,10 +2,6 @@ format pe console
 entry main
 
 include 'win32a.inc'
-include 'process.asm'
-include 'utils.asm'
-include 'features.asm'
-include 'entity.asm'
 
 section '.text' code executable
 main:
@@ -25,15 +21,15 @@ worker:
         call NoHands
         
         invoke GetAsyncKeyState, 5
-        test eax, eax
+        test ax, ax
         jnz .triggerKey
 
         invoke GetAsyncKeyState, 32
-        test eax, eax
+        test ax, ax
         jnz .bhopKey
 
         invoke GetAsyncKeyState, 35 ; panic key
-        test eax, eax
+        test ax, ax
         jnz exit
 
         jmp worker
@@ -47,6 +43,11 @@ worker:
         
 exit:
     invoke ExitProcess, 0
+
+include 'process.asm'
+include 'utils.asm'
+include 'features.asm'
+include 'entity.asm'
 
 section '.data' data  readable writeable
     tWnd    dd ?
@@ -68,7 +69,10 @@ section '.data' data  readable writeable
 section '.rdata' data readable
     debugMsg db "Salut", 10, 0
 
-    dwForce db 0x6
+    vNoHands    dd 1f
+    FlashAlpha  dd 0f
+    dwForce     db 0x6
+
     dwLocalPlayerPtr    dd 0xAAFC3C
     dwEntityList		dd 0x4A8D05C
     dwClientState       dd 0x5A5344

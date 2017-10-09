@@ -30,7 +30,7 @@ Initialize:
         .init:
             invoke CreateToolhelp32Snapshot, 0x8, [pId] ; 0x00000008 = TH32CS_SNAPMODULE
             mov [tmpSnap], eax
-            mov [tmpProc.dwSize], 1316
+            mov [tmpProc.dwSize], sizeof.MODULEENTRY32
             invoke Module32First, [tmpSnap], tmpProc
         
         .topModule:
